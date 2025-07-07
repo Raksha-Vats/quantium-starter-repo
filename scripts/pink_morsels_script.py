@@ -1,14 +1,23 @@
 import pandas as pd
+import os
 
-# List your 3 CSV file names
-input_files = ["daily_sales_data_0.csv", "daily_sales_data_1.csv","daily_sales_data_2.csv"]  
+# Path to the data folder (one level up from scripts)
+data_folder = os.path.join("..", "data")
+
+# List your CSV file names
+input_files = [
+    "daily_sales_data_0.csv",
+    "daily_sales_data_1.csv",
+    "daily_sales_data_2.csv"
+]
 
 # Create an empty list to store filtered DataFrames
 all_data = []
 
 # Process each file
 for file in input_files:
-    df = pd.read_csv(file)
+    file_path = os.path.join(data_folder, file)  # full path to input file
+    df = pd.read_csv(file_path)
 
     # Filter for 'pink morsel'
     df = df[df['product'].str.lower() == 'pink morsel']
@@ -19,14 +28,13 @@ for file in input_files:
 
     # Keep only sales, date, region
     filtered = df[['sales', 'date', 'region']]
-
-    # Add to the combined list
     all_data.append(filtered)
 
 # Combine all filtered data into one DataFrame
 final_df = pd.concat(all_data, ignore_index=True)
 
-# Save to a single CSV file
-final_df.to_csv("pink_morsel_sales_combined.csv", index=False)
+# Output path in the data folder
+output_path = os.path.join(data_folder, "pink_morsel_sales_combined.csv")
+final_df.to_csv(output_path, index=False)
 
-print("✅ pink_morsel_sales_combined.csv created successfully.")
+print("✅ pink_morsel_sales_combined.csv created successfully in the data folder.")
