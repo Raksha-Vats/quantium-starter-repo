@@ -4,7 +4,9 @@ import plotly.express as px
 import os
 
 # Load data
-DATA_PATH = "../data/pink_morsel_sales_combined.csv"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, '..', 'data', 'pink_morsel_sales_combined.csv')
 df = pd.read_csv(DATA_PATH)
 df['date'] = pd.to_datetime(df['date'])
 
@@ -28,7 +30,7 @@ app = Dash(__name__)
 
 # App layout
 app.layout = html.Div([
-    html.H1("Pink Morsel Sales Visualizer", style={
+    html.H1("Pink Morsel Sales Visualizer",  id='header',style={
         'textAlign': 'center',
         'color': '#EF476F',
         'fontFamily': 'Arial Black',
