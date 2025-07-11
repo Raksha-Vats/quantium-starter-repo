@@ -5,7 +5,7 @@ from dash import dcc, html
 
 # Add path to import app
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from scripts.pink_morsels_dash import app, update_graph
+from pink_morsels_dash import app, update_graph
 
 def test_header_present():
     layout = app.layout

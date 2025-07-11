@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 # Path to the data folder (one level up from scripts)
-data_folder = os.path.join("..", "data")
+data_folder = os.path.join("data")
 
 # List your CSV file names
 input_files = [

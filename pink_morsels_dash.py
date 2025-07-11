@@ -6,7 +6,7 @@ import os
 # Load data
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(BASE_DIR, '..', 'data', 'pink_morsel_sales_combined.csv')
+DATA_PATH = os.path.join(BASE_DIR,  'data', 'pink_morsel_sales_combined.csv')
 df = pd.read_csv(DATA_PATH)
 df['date'] = pd.to_datetime(df['date'])
 
